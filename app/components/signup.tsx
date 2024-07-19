@@ -9,15 +9,17 @@ import Link from 'next/link';
 import Loading from '@/app/loading';
 import * as z from 'zod';
 import type { Database } from '@/lib/database.types';
+import { error } from 'console';
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
 const schema = z.object({
+  name: z.string().min(2, { message: '2文字以上入力する必要があります。' }),
   email: z.string().email({ message: 'メールアドレスの形式ではありません。' }),
   password: z.string().min(6, { message: '6文字以上入力する必要があります。' }),
 });
 
-const Login = () => {
+const Signup = () => {
   const router = useRouter();
   const supabase = createClientComponentClient<Database>();
   const [loading, setLoading] = useState(false);
@@ -27,44 +29,78 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     // 初期値
-    defaultValues: { email: '', password: '' },
+    defaultValues: { name: '', email: '', password: '' },
     // 入力値の検証
     resolver: zodResolver(schema),
   });
 
+  // 送信
   const onSubmit: SubmitHandler<Schema> = async (data) => {
     setLoading(true);
 
     try {
-      // ログイン
-      const { error } = await supabase.auth.signInWithPassword({
+      // サインアップ
+      const { error: errorSignup } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
+        options: {
+          emailRedirectTo: `${location.origin}/auth/callback`,
+        },
       });
 
       // エラーチェック
-      if (error) {
-        setMessage('エラーが発生しました。' + error.message);
+      if (errorSignup) {
+        setMessage('エラーが発生しました。' + errorSignup.message);
         return;
       }
 
-      // トップページに遷移
-      router.push('/');
+      // プロフィールの名前を更新
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .update({ name: data.name })
+        .eq('email', data.email);
+
+      // エラーチェック
+      if (updateError) {
+        setMessage('エラーが発生しました。' + updateError.message);
+        return;
+      }
+
+      // 入力フォームクリア
+      reset();
+      setMessage(
+        '本登録用のURLを記載したメールを送信しました。メールをご確認の上、メール本文中のURLをクリックして、本登録を行ってください。',
+      );
     } catch (error) {
-      setMessage('エラーが発生しました。' + error);
+      setMessage(`エラーが発生しました。 ${error}`);
       return;
     } finally {
       setLoading(false);
-      router.refresh();
+      router.refresh;
     }
   };
 
   return (
     <div className="max-w-[400px] mx-auto">
-      <div className="text-center font-bold text-xl mb-10">ログイン</div>
+      <div className="text-center font-bold text-xl mb-10">サインアップ</div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/* 名前 */}
+        <div className="mb-3">
+          <input
+            type="text"
+            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
+            placeholder="名前"
+            id="name"
+            {...register('name', { required: true })}
+          />
+          <div className="my-3 text-center text-sm text-red-500">
+            {errors.name?.message}
+          </div>
+        </div>
+
         {/* メールアドレス */}
         <div className="mb-3">
           <input
@@ -83,7 +119,7 @@ const Login = () => {
         <div className="mb-5">
           <input
             type="password"
-            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
+            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500 dark:text-black"
             placeholder="パスワード"
             id="password"
             {...register('password', { required: true })}
@@ -93,16 +129,16 @@ const Login = () => {
           </div>
         </div>
 
-        {/* ログインボタン */}
+        {/* サインアップボタン */}
         <div className="mb-5">
           {loading ? (
             <Loading />
           ) : (
             <button
               type="submit"
-              className="font-bold bg-yellow-400 hover:brightness-95 w-full rounded-full p-2 text-sm text-gray-800"
+              className="font-bold bg-sky-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
             >
-              ログイン
+              サインアップ
             </button>
           )}
         </div>
@@ -112,25 +148,13 @@ const Login = () => {
         <div className="my-5 text-center text-sm text-red-500">{message}</div>
       )}
 
-      <div className="text-center text-sm mb-5">
-        <Link
-          href="/auth/reset-password"
-          className="text-gray-500 dark:text-gray-300 font-bold"
-        >
-          パスワードを忘れた方はこちら
-        </Link>
-      </div>
-
       <div className="text-center text-sm">
-        <Link
-          href="/auth/signup"
-          className="text-gray-500 dark:text-gray-300 font-bold"
-        >
-          アカウントを作成する
+        <Link href="/auth/login" className="text-gray-500 font-bold">
+          ログインはこちら
         </Link>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

@@ -6,8 +6,8 @@ import SupabaseListener from './components/supabase-listener';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Supabase Auth',
-  description: 'Supabase Auth',
+  title: '天心',
+  description: '静岡県御殿場市 中華天心',
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
           </main>
 
           <footer className="py-5">
-            <div className="text-center text-sm">
+            <div className="text-center text-sm text-gray-400">
               Copyright © All rights reserved | 中華 天心
             </div>
           </footer>
