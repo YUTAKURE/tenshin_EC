@@ -1,14 +1,34 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FiSun, FiMoon } from 'react-icons/fi';
-import useThemeSwitcher from '../../hooks/useThemeSwitcher';
 import Link from 'next/link';
+import useStore from '@/store';
+import Image from 'next/image';
+import { useEffect } from 'react';
 import type { Session } from '@supabase/auth-helpers-nextjs';
+import type { Database } from '@/lib/database.types';
+type ProfileType = Database['public']['Tables']['profiles']['Row'];
+import Darkmode from './darkmode';
 
 // ナビゲーション
-const Navigation = ({ session }: { session?: Session | null }) => {
-  const [activeTheme, setTheme] = useThemeSwitcher();
+const Navigation = ({
+  session,
+  profile,
+}: {
+  session?: Session | null;
+  profile: ProfileType | null;
+}) => {
+  const { setUser } = useStore();
+
+  // 状態管理にユーザー情報を保存
+  useEffect(() => {
+    setUser({
+      id: session ? session.user.id : '',
+      email: session ? session.user.email! : '',
+      name: session && profile ? profile.name : '',
+      introduce: session && profile ? profile.introduce : '',
+      avatar_url: session && profile ? profile.avatar_url : '',
+    });
+  }, [session, setUser, profile]);
 
   return (
     <header className="shadow-custom-dark dark:shadow-custom-light">
@@ -32,18 +52,7 @@ const Navigation = ({ session }: { session?: Session | null }) => {
             )}
           </div>
 
-          {/* Theme switcher large screen */}
-          <div
-            onClick={() => setTheme(activeTheme)}
-            aria-label="Theme Switcher"
-            className="ml-8 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
-          >
-            {activeTheme === 'dark' ? (
-              <FiMoon className="text-ternary-dark hover:text-gray-400 dark:text-ternary-light dark:hover:text-primary-light text-xl" />
-            ) : (
-              <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
-            )}
-          </div>
+          <Darkmode />
         </div>
       </div>
     </header>
