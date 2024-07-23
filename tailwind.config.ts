@@ -31,6 +31,9 @@ const config: Config = {
         'custom-dark':
           '0 10px 15px -3px rgba(243,244,246, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
       },
+      padding: {
+        'custom-pb': 'calc((284 / 600) * 100%)', // ここでカスタムクラスを定義
+      },
     },
   },
   plugins: [],

@@ -2,6 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
 import type { Database } from '@/lib/database.types';
+import GoogleMap from './components/map';
 
 const Home = async () => {
   const supabase = createServerComponentClient<Database>({
@@ -16,6 +17,10 @@ const Home = async () => {
   return (
     <div className="text-center text-xl ">
       {session ? <div>ログイン済</div> : <div>未ログイン</div>}
+
+      <div>
+        <GoogleMap />
+      </div>
     </div>
   );
 };
