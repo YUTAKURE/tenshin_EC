@@ -80,7 +80,7 @@ const Password = () => {
           <div className="text-sm mb-1 font-bold">新しいパスワード</div>
           <input
             type="password"
-            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
+            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500 text-primary-dark"
             placeholder="新しいパスワード"
             id="password"
             {...register('password', { required: true })}
@@ -95,7 +95,7 @@ const Password = () => {
           <div className="text-sm mb-1 font-bold">確認用パスワード</div>
           <input
             type="password"
-            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
+            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500 text-primary-dark"
             placeholder="確認用パスワード"
             id="confirmation"
             {...register('confirmation', { required: true })}
@@ -124,10 +124,6 @@ const Password = () => {
           <div className="text-center text-sm text-red-500">{message}</div>
         )}
       </form>
-
-      {message && (
-        <div className="my-5 text-center text-sm text-red-500">{message}</div>
-      )}
     </div>
   );
 };
