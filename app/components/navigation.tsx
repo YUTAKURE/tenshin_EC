@@ -58,7 +58,7 @@ const Navigation = ({
             ) : (
               <div className="flex items-center space-x-5">
                 <Link href="/auth/login">ログイン</Link>
-                <Link href="/auth/signup">会員登録</Link>
+                <Link href="/auth/signup">新規登録</Link>
               </div>
             )}
           </div>

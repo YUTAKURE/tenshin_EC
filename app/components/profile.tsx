@@ -163,7 +163,15 @@ const Profile = () => {
                 fill
               />
             </div>
-            <input type="file" id="avatar" onChange={onUploadImage} />
+            <label className=" inline-block w-[140px] text-center px-4 py-2 text-xs bg-slate-200 text-gray-800 cursor-pointer rounded-full">
+              <input
+                type="file"
+                id="avatar"
+                onChange={onUploadImage}
+                className=" opacity-0 w-0"
+              />
+              画像アップロード
+            </label>
             {fileMessage && (
               <div className="text-center text-red-500 my-5">{fileMessage}</div>
             )}
