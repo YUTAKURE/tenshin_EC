@@ -52,9 +52,17 @@ const Profile = () => {
   }, [user]);
 
   // 画像アップロード
+  const [fileName, setFileName] = useState('');
+
   const onUploadImage = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const files = e.target.files;
+      if (files) {
+        setFileName(files[0].name);
+      } else {
+        setFileName('');
+      }
+
       setFileMessage('');
 
       // ファイルが選択されていない場合
@@ -163,7 +171,7 @@ const Profile = () => {
                 fill
               />
             </div>
-            <label className=" inline-block w-[140px] text-center px-4 py-2 text-xs bg-slate-200 text-gray-800 cursor-pointer rounded-full">
+            <label className="inline-block w-[140px] text-center px-4 py-2 text-xs bg-slate-200 text-gray-800 cursor-pointer rounded-full hover:bg-slate-300">
               <input
                 type="file"
                 id="avatar"
@@ -172,6 +180,7 @@ const Profile = () => {
               />
               画像アップロード
             </label>
+            {fileName && <p className="mt-2">{fileName}</p>}
             {fileMessage && (
               <div className="text-center text-red-500 my-5">{fileMessage}</div>
             )}
