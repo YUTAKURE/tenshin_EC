@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import SupabaseListener from './components/supabase-listener';
+import { CartProvider } from './components/CartContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen bg-secondary-light text-primary-dark dark:bg-primary-dark dark:text-secondary-light transition duration-300 ">
           <SupabaseListener />
           <main className="flex-1 container max-w-screen-sm mx-auto px-1 py-5">
-            {children}
+            <CartProvider>{children}</CartProvider>
           </main>
 
           <footer className="py-5">
