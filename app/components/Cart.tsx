@@ -31,13 +31,17 @@ const Cart = () => {
 
   const checkout = async () => {
     setLoading(true);
-    await fetch('http://localhost:3000/api/checkout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    await fetch(
+      // 'http://localhost:3000/api/checkout',
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/checkout`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ products: cart }),
       },
-      body: JSON.stringify({ products: cart }),
-    })
+    )
       .then((response) => {
         return response.json();
       })
