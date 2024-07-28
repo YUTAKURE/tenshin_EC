@@ -1,6 +1,9 @@
 import { error } from 'console';
 import { NextResponse } from 'next/server';
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
+import { NextApiRequest, NextApiResponse } from 'next';
+import Stripe from 'stripe';
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const getActiveProducts = async () => {
   const checkProducts = await stripe.products.list();
@@ -57,8 +60,10 @@ export const POST = async (request: any) => {
   const session = await stripe.checkout.sessions.create({
     line_items: stripeItems,
     mode: 'payment',
-    success_url: 'http://localhost:3000/success',
-    cancel_url: 'http://localhost:3000/cancel',
+    // success_url: 'http://localhost:3000/success',
+    // cancel_url: 'http://localhost:3000/cancel',
+    success_url: process.env.NEXT_PUBLIC_SUCCESS_URL,
+    cancel_url: process.env.NEXT_PUBLIC_CANCEL_URL,
   });
 
   return NextResponse.json({ url: session.url });
