@@ -32,8 +32,11 @@ const Navigation = ({
 
   return (
     <header className="shadow-custom-dark dark:shadow-custom-light">
-      <div className="py-5 container max-w-screen-md mx-auto flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl cursor-pointer">
+      <div className="py-5 container max-w-screen-lg w-11/12 mx-auto flex items-center justify-between">
+        <Link
+          href="/"
+          className="text-xl font-bold text-red-600 dark:text-yellow-300 cursor-pointer font-title"
+        >
           中華 天心
         </Link>
         <div className="flex items-center justify-between">

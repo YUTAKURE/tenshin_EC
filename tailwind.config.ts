@@ -9,6 +9,9 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        title: ['"Noto Serif TC"'], // Googleフォントの名前をここに追加
+      },
       colors: {
         // Light colors
         'primary-light': '#F7F8FC',

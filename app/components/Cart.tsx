@@ -76,13 +76,13 @@ const Cart = () => {
               <div className="flex space-x-2">
                 <button
                   onClick={() => handleDecrement(parseInt(product.id))}
-                  className="px-2 py-1 bg-red-500 text-white hover:bg-red-600 w-8 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                  className="px-2 py-1 text-black border rounded-md bg-slate-100 hover:bg-slate-200"
                 >
                   -
                 </button>
                 <button
                   onClick={() => incrementQuantity(parseInt(product.id))}
-                  className="px-2 py-1 bg-blue-500 text-white hover:bg-blue-600 w-8 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="px-2 py-1 text-black border rounded-md bg-slate-100 hover:bg-slate-200"
                 >
                   +
                 </button>
@@ -107,7 +107,7 @@ const Cart = () => {
           ) : (
             <button
               onClick={checkout}
-              className="mt-4 px-4 py-2 bg-green-500 text-white hover:bg-green-600 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="mt-4 px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               注文する
             </button>

@@ -100,7 +100,7 @@ const Login = () => {
           ) : (
             <button
               type="submit"
-              className="font-bold bg-yellow-400 hover:brightness-95 w-full rounded-full p-2 text-sm text-gray-800"
+              className="font-bold bg-blue-400 hover:brightness-95 w-full rounded-full p-2 text-sm text-gray-800"
             >
               ログイン
             </button>

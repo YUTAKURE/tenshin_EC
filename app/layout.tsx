@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex flex-col min-h-screen bg-secondary-light text-primary-dark dark:bg-primary-dark dark:text-secondary-light transition duration-300 ">
           <SupabaseListener />
-          <main className="flex-1 container max-w-screen-sm mx-auto px-1 py-5">
+          <main className="flex-1 container max-w-screen-md mx-auto px-1 py-5">
             <CartProvider>{children}</CartProvider>
           </main>
 

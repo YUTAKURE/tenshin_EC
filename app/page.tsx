@@ -5,6 +5,7 @@ import type { Database } from '@/lib/database.types';
 import GoogleMap from './components/map';
 import Product from './components/product';
 import Cart from './components/Cart';
+import Image from 'next/image';
 
 const products: Product[] = [
   {
@@ -39,20 +40,109 @@ const Home = async () => {
   }
 
   return (
-    <div className="text-center text-xl ">
-      {session ? <div>{profile?.name} 様</div> : <div>未ログイン</div>}
+    <div className="text-center">
+      <div className="mb-10">
+        {session ? (
+          <div className="text-sm text-slate-700 dark:text-slate-50">
+            {profile?.name} 様
+          </div>
+        ) : (
+          <div className="text-sm text-slate-700 dark:text-slate-50">
+            ゲスト 様
+          </div>
+        )}
+      </div>
 
-      <div className="flex flex-col gap-8">
-        <h1 className="text-3xl">商品</h1>
-        <div className="grid grid-cols-3 gap-4">
+      <div className="mb-10 mt-20 w-5/6 mx-auto">
+        <h1 className="text-xl text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
+          ご挨拶
+        </h1>
+        <p className="text-sm text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-10">
+          中華天心のギョウザ販売サイトです。
+          以前は株式会社DD様の多大なるご協力により、多くの方に当店のギョウザをお届けすることができました。
+          この度、オンライン注文受付およびカード決済に対応いたしましたので、よりお気軽に天心のギョウザをお楽しみいただけるようになりました。
+        </p>
+
+        <h1 className="text-xl text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
+          ご利用方法
+        </h1>
+        <p className="text-sm text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-5">
+          大変お手数をおかけいたしますが、新規登録からお客様情報をご登録の上、ご注文をお願いいたします。
+          また、ご購入者様限定で、ご希望の方には特典メッセージをお届けいたします。
+          ささやかではございますが、ログイン後のメニューから特典もお楽しみいただけましたら幸いです。
+        </p>
+        <p className="text-sm text-slate-700 dark:text-slate-50 font-extralight leading-relaxed">
+          どうぞよろしくお願い申し上げます。
+        </p>
+      </div>
+
+      {/* <div className="flex flex-col gap-8">
+        <div className="grid grid-cols-2 gap-4">
           {products.map((product) => (
             <Product key={product.id} product={product} />
           ))}
         </div>
+
         <Cart />
+      </div> */}
+
+      <div className=" sm:hidden">
+        <div className=" w-11/12 mx-auto mt-20">
+          <h2 className=" font-light mx-auto">#天心のギョウザ</h2>
+          <div>
+            <p>25個入 ¥3,600</p>
+            <p className="text-xs font-thin">
+              特典付き for <span className="dark:text-yellow-300">黄推し</span>
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col items-center w-11/12 mx-auto mt-6">
+          <Image
+            src="/tenshin_gyoza2.jpg"
+            alt="An example image"
+            width={350}
+            height={250}
+            className=" rounded-3xl opacity-60 dark:opacity-70"
+          />
+          <Image
+            src="/tenshin_gyoza1.jpg"
+            alt="An example image"
+            width={350}
+            height={250}
+            className=" rounded-3xl opacity-60 dark:opacity-70 mt-2"
+          />
+        </div>
       </div>
 
-      <div>
+      <div className="hidden sm:block">
+        <div className="flex place-items-center w-11/12 mx-auto mt-20">
+          <h2 className=" font-light mx-auto">#天心のギョウザ</h2>
+          <Image
+            src="/tenshin_gyoza2.jpg"
+            alt="An example image"
+            width={350}
+            height={250}
+            className=" rounded-3xl opacity-60 dark:opacity-70"
+          />
+        </div>
+        <div className="flex place-items-center w-11/12 mx-auto md:-mt-2 ">
+          <Image
+            src="/tenshin_gyoza1.jpg"
+            alt="An example image"
+            width={350}
+            height={250}
+            className=" rounded-3xl opacity-60 dark:opacity-70"
+          />
+          <div className="font-light mx-auto">
+            <p>25個入 ¥3,600</p>
+            <p className="text-xs font-thin mt-2">
+              特典付き for <span className="dark:text-yellow-300">黄推し</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-4/5 mx-auto">
         <GoogleMap />
       </div>
     </div>
