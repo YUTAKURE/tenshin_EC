@@ -35,7 +35,7 @@ const Navigation = ({
       <div className="py-5 container max-w-screen-lg w-11/12 mx-auto flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-bold text-red-600 dark:text-yellow-300 cursor-pointer font-title"
+          className="text-md md:text-xl font-bold text-red-600 dark:text-yellow-300 cursor-pointer font-title"
         >
           中華 天心
         </Link>
@@ -60,8 +60,12 @@ const Navigation = ({
               </div>
             ) : (
               <div className="flex items-center space-x-5">
-                <Link href="/auth/login">ログイン</Link>
-                <Link href="/auth/signup">新規登録</Link>
+                <Link href="/auth/login" className="text-xs md:text-sm">
+                  ログイン
+                </Link>
+                <Link href="/auth/signup" className="text-xs md:text-sm">
+                  新規登録
+                </Link>
               </div>
             )}
           </div>

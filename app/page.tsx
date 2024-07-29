@@ -53,11 +53,11 @@ const Home = async () => {
         )}
       </div>
 
-      <div className="mb-10 mt-20 w-5/6 mx-auto">
+      <div className="mb-10 mt-20 w-5/6 md:w-11/12 mx-auto">
         <h1 className="text-xl text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
           ご挨拶
         </h1>
-        <p className="text-sm text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-10">
+        <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-10">
           中華天心のギョウザ販売サイトです。
           以前は株式会社DD様の多大なるご協力により、多くの方に当店のギョウザをお届けすることができました。
           この度、オンライン注文受付およびカード決済に対応いたしましたので、よりお気軽に天心のギョウザをお楽しみいただけるようになりました。
@@ -66,12 +66,12 @@ const Home = async () => {
         <h1 className="text-xl text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
           ご利用方法
         </h1>
-        <p className="text-sm text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-5">
+        <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-5">
           大変お手数をおかけいたしますが、新規登録からお客様情報をご登録の上、ご注文をお願いいたします。
           また、ご購入者様限定で、ご希望の方には特典メッセージをお届けいたします。
           ささやかではございますが、ログイン後のメニューから特典もお楽しみいただけましたら幸いです。
         </p>
-        <p className="text-sm text-slate-700 dark:text-slate-50 font-extralight leading-relaxed">
+        <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed">
           どうぞよろしくお願い申し上げます。
         </p>
       </div>
@@ -86,7 +86,7 @@ const Home = async () => {
         <Cart />
       </div> */}
 
-      <div className=" sm:hidden">
+      <div className=" md:hidden">
         <div className=" w-11/12 mx-auto mt-20">
           <h2 className=" font-light mx-auto">#天心のギョウザ</h2>
           <div>
@@ -114,7 +114,7 @@ const Home = async () => {
         </div>
       </div>
 
-      <div className="hidden sm:block">
+      <div className="hidden md:block">
         <div className="flex place-items-center w-11/12 mx-auto mt-20">
           <h2 className=" font-light mx-auto">#天心のギョウザ</h2>
           <Image
