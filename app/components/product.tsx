@@ -37,7 +37,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
           isProductInCart
             ? 'bg-gray-400 text-gray-600 text-sm cursor-not-allowed'
             : 'bg-blue-500 text-white text-sm hover:bg-blue-600'
-        } rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+        } rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
       >
         {isProductInCart ? 'カートに追加済' : 'カートに入れる'}
       </button>

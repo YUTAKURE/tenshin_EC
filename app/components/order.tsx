@@ -18,7 +18,7 @@ const Order = () => {
     <div>
       <div className="text-center font-bold text-xl mb-10">注文ページ</div>
 
-      <div className="w-1/2 mx-auto">
+      <div className="w-2/3 mx-auto">
         {/* className="grid grid-cols-2 gap-4" */}
         {products.map((product) => (
           <Product key={product.id} product={product} />

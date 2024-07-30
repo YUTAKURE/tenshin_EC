@@ -54,7 +54,7 @@ const Cart = () => {
         }
       });
   };
-
+  console.log(jpy.format(totalAmount));
   return (
     <div className="border rounded-lg p-4 shadow-md w-5/6 mx-auto mt-10">
       <h2 className="text-lg font-semibold mb-4 text-center">カート</h2>
@@ -83,6 +83,7 @@ const Cart = () => {
                 <button
                   onClick={() => incrementQuantity(parseInt(product.id))}
                   className="px-2 py-1 text-black border rounded-md bg-slate-100 hover:bg-slate-200"
+                  disabled={product.quantity >= 3 ? true : false}
                 >
                   +
                 </button>
@@ -95,6 +96,9 @@ const Cart = () => {
       {cart.length > 0 && (
         <>
           <div className="mt-4">
+            {totalAmount === 10800 && (
+              <p className="text-red-500">最大3セットまで</p>
+            )}
             <p className="text-lg font-semibold">
               合計: {jpy.format(totalAmount)}
             </p>
@@ -107,7 +111,7 @@ const Cart = () => {
           ) : (
             <button
               onClick={checkout}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="mt-4 px-4 py-2 w-full bg-blue-500 text-white hover:bg-blue-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               注文する
             </button>

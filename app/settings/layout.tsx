@@ -52,8 +52,8 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (
-    <div className="grid grid-cols-5 sm:grid-cols-3 gap-3 ">
-      <div className="col-span-1 text-sm space-y-1 font-medium flex flex-col w-10 sm:w-4/5 translate-x-6 sm:translate-x-0">
+    <div className="grid grid-cols-6 sm:grid-cols-3 gap-3 ">
+      <div className="col-span-1 text-sm space-y-1 font-medium flex flex-col w-10 sm:w-4/5 translate-x-2 sm:translate-x-0">
         <div className="mb-10">
           {subNavigation1.map((item, index) => (
             <Link href={item.href} key={index}>
@@ -92,7 +92,7 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
         ))}
       </div>
-      <div className="col-span-4 sm:col-span-2">{children}</div>
+      <div className="col-span-5 sm:col-span-2">{children}</div>
     </div>
   );
 };
