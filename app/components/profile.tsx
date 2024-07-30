@@ -11,6 +11,7 @@ import Loading from '@/app/loading';
 import * as z from 'zod';
 import type { Database } from '@/lib/database.types';
 import useStore from '@/store';
+import Address from './address';
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
@@ -24,10 +25,10 @@ const Profile = () => {
   const router = useRouter();
   const supabase = createClientComponentClient<Database>();
   const [loading, setLoading] = useState(false);
-  const [avatar, setAvatar] = useState<File | null>(null);
+  // const [avatar, setAvatar] = useState<File | null>(null);
   const [message, setMessage] = useState('');
   const [fileMessage, setFileMessage] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('/default.png');
+  // const [avatarUrl, setAvatarUrl] = useState('/default.png');
   const { user } = useStore();
 
   const {
@@ -45,52 +46,52 @@ const Profile = () => {
   });
 
   // アバター画像の取得
-  useEffect(() => {
-    if (user && user.avatar_url) {
-      setAvatarUrl(user.avatar_url);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user && user.avatar_url) {
+  //     setAvatarUrl(user.avatar_url);
+  //   }
+  // }, [user]);
 
   // 画像アップロード
-  const [fileName, setFileName] = useState('');
+  // const [fileName, setFileName] = useState('');
 
-  const onUploadImage = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const files = e.target.files;
-      if (files) {
-        setFileName(files[0].name);
-      } else {
-        setFileName('');
-      }
+  // const onUploadImage = useCallback(
+  //   (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const files = e.target.files;
+  //     if (files) {
+  //       setFileName(files[0].name);
+  //     } else {
+  //       setFileName('');
+  //     }
 
-      setFileMessage('');
+  //     setFileMessage('');
 
-      // ファイルが選択されていない場合
-      if (!files || files?.length == 0) {
-        setFileMessage('画像をアップロードしてください。');
-        return;
-      }
+  //     // ファイルが選択されていない場合
+  //     if (!files || files?.length == 0) {
+  //       setFileMessage('画像をアップロードしてください。');
+  //       return;
+  //     }
 
-      const fileSize = files[0]?.size / 1024 / 1024; // size in MB
-      const fileType = files[0]?.type; // MIME type of the file
+  //     const fileSize = files[0]?.size / 1024 / 1024; // size in MB
+  //     const fileType = files[0]?.type; // MIME type of the file
 
-      // 画像サイズが2MBを超える場合
-      if (fileSize > 2) {
-        setFileMessage('画像サイズを2MB以下にする必要があります。');
-        return;
-      }
+  //     // 画像サイズが2MBを超える場合
+  //     if (fileSize > 2) {
+  //       setFileMessage('画像サイズを2MB以下にする必要があります。');
+  //       return;
+  //     }
 
-      // ファイル形式がjpgまたはpngでない場合
-      if (fileType !== 'image/jpeg' && fileType !== 'image/png') {
-        setFileMessage('画像はjpgまたはpng形式である必要があります。');
-        return;
-      }
+  //     // ファイル形式がjpgまたはpngでない場合
+  //     if (fileType !== 'image/jpeg' && fileType !== 'image/png') {
+  //       setFileMessage('画像はjpgまたはpng形式である必要があります。');
+  //       return;
+  //     }
 
-      // 画像をセット
-      setAvatar(files[0]);
-    },
-    [],
-  );
+  //     // 画像をセット
+  //     setAvatar(files[0]);
+  //   },
+  //   [],
+  // );
 
   // 送信
   const onSubmit: SubmitHandler<Schema> = async (data) => {
@@ -98,37 +99,37 @@ const Profile = () => {
     setMessage('');
 
     try {
-      let avatar_url = user.avatar_url;
+      // let avatar_url = user.avatar_url;
 
-      if (avatar) {
-        // supabaseストレージに画像アップロード
-        const { data: storageData, error: storageError } =
-          await supabase.storage
-            .from('profile')
-            .upload(`${user.id}/${uuidv4()}`, avatar);
+      // if (avatar) {
+      //   // supabaseストレージに画像アップロード
+      //   const { data: storageData, error: storageError } =
+      //     await supabase.storage
+      //       .from('profile')
+      //       .upload(`${user.id}/${uuidv4()}`, avatar);
 
-        // エラーチェック
-        if (storageError) {
-          setMessage('エラーが発生しました。' + storageError.message);
-          return;
-        }
+      //   // エラーチェック
+      //   if (storageError) {
+      //     setMessage('エラーが発生しました。' + storageError.message);
+      //     return;
+      //   }
 
-        if (avatar_url) {
-          const fileName = avatar_url.split('/').slice(-1)[0];
+      //   if (avatar_url) {
+      //     const fileName = avatar_url.split('/').slice(-1)[0];
 
-          // 古い画像を削除
-          await supabase.storage
-            .from('profile')
-            .remove([`${user.id}/${fileName}`]);
-        }
+      //     // 古い画像を削除
+      //     await supabase.storage
+      //       .from('profile')
+      //       .remove([`${user.id}/${fileName}`]);
+      //   }
 
-        // 画像のURLを取得
-        const { data: urlData } = await supabase.storage
-          .from('profile')
-          .getPublicUrl(storageData.path);
+      //   // 画像のURLを取得
+      //   const { data: urlData } = await supabase.storage
+      //     .from('profile')
+      //     .getPublicUrl(storageData.path);
 
-        avatar_url = urlData.publicUrl;
-      }
+      //   avatar_url = urlData.publicUrl;
+      // }
 
       // プロフィールアップデート
       const { error: updateError } = await supabase
@@ -136,7 +137,7 @@ const Profile = () => {
         .update({
           name: data.name,
           introduce: data.introduce,
-          avatar_url,
+          // avatar_url,
         })
         .eq('id', user.id);
 
@@ -157,21 +158,21 @@ const Profile = () => {
   };
 
   return (
-    <div>
-      <div className="text-center font-bold text-xl mb-10">プロフィール</div>
+    <div className="w-11/12 mx-auto">
+      <div className="text-center font-bold text-xl">プロフィール</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* アバター画像 */}
-        <div className="mb-5">
-          <div className="flex flex-col text-sm items-center justify-center mb-5">
-            <div className="relative w-24 h-24 mb-5">
-              <Image
+        <div className="">
+          <div className="flex flex-col text-sm items-center justify-center">
+            <div className="relative w-24 h-24">
+              {/* <Image
                 src={avatarUrl}
                 className="rounded-full object-cover"
                 alt="avatar"
                 fill
-              />
+              /> */}
             </div>
-            <label className="inline-block w-[140px] text-center px-4 py-2 text-xs bg-slate-200 text-gray-800 cursor-pointer rounded-full hover:bg-slate-300">
+            {/* <label className="inline-block w-[140px] text-center px-4 py-2 text-xs bg-slate-200 text-gray-800 cursor-pointer rounded-full hover:bg-slate-300">
               <input
                 type="file"
                 id="avatar"
@@ -183,12 +184,12 @@ const Profile = () => {
             {fileName && <p className="mt-2">{fileName}</p>}
             {fileMessage && (
               <div className="text-center text-red-500 my-5">{fileMessage}</div>
-            )}
+            )} */}
           </div>
         </div>
 
         {/* 名前 */}
-        <div className="mb-5">
+        <div className="-mt-14 mb-5">
           <div className="text-sm mb-1 font-bold">名前</div>
           <input
             type="text"
@@ -213,6 +214,11 @@ const Profile = () => {
             {...register('introduce')}
             rows={5}
           />
+        </div>
+
+        {/* 住所 */}
+        <div className="mb-5">
+          <Address />
         </div>
 
         {/* 変更ボタン */}

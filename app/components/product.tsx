@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useCart } from './CartContext';
+import Image from 'next/image';
 
 interface ProductProps {
   product: Product;
@@ -22,6 +23,13 @@ const Product: React.FC<ProductProps> = ({ product }) => {
       <h2 className="text-lg font-semibold">{product.name}</h2>
       {/* <p className="text-gray-400">${product.price.toFixed(2)}</p> */}
       <p className="text-gray-400">{jpy.format(product.price)}</p>
+      <Image
+        src="/tenshin_gyoza2.jpg"
+        alt="An example image"
+        width={350}
+        height={250}
+        className=""
+      />
       <button
         onClick={() => addToCart(product)}
         disabled={isProductInCart}

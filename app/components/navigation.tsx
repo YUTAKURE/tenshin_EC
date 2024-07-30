@@ -43,8 +43,8 @@ const Navigation = ({
           <div className="text-sm font-bold">
             {session ? (
               <div className="flex items-center space-x-5">
-                <Link href="/settings/profile">
-                  <div className="relative w-10 h-10">
+                <Link href="/settings/order">
+                  {/* <div className="relative w-10 h-10">
                     <Image
                       src={
                         profile && profile.avatar_url
@@ -55,7 +55,8 @@ const Navigation = ({
                       alt="avatar"
                       fill
                     />
-                  </div>
+                  </div> */}
+                  <p className="text-xs md:text-sm">会員メニュー</p>
                 </Link>
               </div>
             ) : (

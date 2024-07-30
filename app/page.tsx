@@ -6,15 +6,9 @@ import GoogleMap from './components/map';
 import Product from './components/product';
 import Cart from './components/Cart';
 import Image from 'next/image';
-
-const products: Product[] = [
-  {
-    id: '1',
-    name: '天心のギョウザ(25個入)',
-    price: 3600,
-    quantity: 0,
-  },
-];
+import { redirect } from 'next/navigation';
+import Profile from './components/profile';
+import ProfilePage from './settings/profile/page';
 
 const Home = async () => {
   const supabase = createServerComponentClient<Database>({
@@ -43,8 +37,10 @@ const Home = async () => {
     <div className="text-center">
       <div className="mb-10">
         {session ? (
-          <div className="text-sm text-slate-700 dark:text-slate-50">
-            {profile?.name} 様
+          <div>
+            <div className="text-sm text-slate-700 dark:text-slate-50">
+              {profile?.name} 様
+            </div>
           </div>
         ) : (
           <div className="text-sm text-slate-700 dark:text-slate-50">
@@ -60,7 +56,7 @@ const Home = async () => {
         <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-10">
           中華天心のギョウザ販売サイトです。
           以前は株式会社DD様の多大なるご協力により、多くの方に当店のギョウザをお届けすることができました。
-          この度、オンライン注文受付およびカード決済に対応いたしましたので、よりお気軽に天心のギョウザをお楽しみいただけるようになりました。
+          この度、オンライン注文受付及びカード決済に対応いたしましたので、よりお気軽に天心のギョウザをお楽しみいただけるようになりました。
         </p>
 
         <h1 className="text-xl text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">

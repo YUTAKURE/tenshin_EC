@@ -74,7 +74,7 @@ const Email = ({ email }: { email: string }) => {
   };
 
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <div className="text-center font-bold text-xl mb-10">
         メールアドレス変更
       </div>

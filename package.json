@@ -16,6 +16,7 @@
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/supabase-js": "^2.44.4",
     "@types/uuid": "^10.0.0",
+    "axios": "^1.7.2",
     "encoding": "^0.1.13",
     "framer-motion": "^11.3.7",
     "next": "^14.2.5",
