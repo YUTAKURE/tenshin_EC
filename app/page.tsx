@@ -63,9 +63,9 @@ const Home = async () => {
           ご利用方法
         </h1>
         <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-5">
-          大変お手数をおかけいたしますが、新規登録からお客様情報をご登録の上、ご注文をお願いいたします。
-          また、ご購入者様限定で、ご希望の方には特典メッセージをお届けいたします。
-          ささやかではございますが、ログイン後のメニューから特典もお楽しみいただけましたら幸いです。
+          大変お手数をおかけいたしますが、新規登録からお客様情報をご登録の上、
+          ログイン後の会員メニュー内からご注文をお願いいたします。
+          クール便での発送となります。&#40;国内のみ&#41;
         </p>
         <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed">
           どうぞよろしくお願い申し上げます。
@@ -131,9 +131,7 @@ const Home = async () => {
           />
           <div className="font-light mx-auto">
             <p>25個入 ¥3,600</p>
-            <p className="text-xs font-thin mt-2">
-              特典付き for <span className="dark:text-yellow-300">黄推し</span>
-            </p>
+            <p className="text-xs font-thin mt-2">特典付き</p>
           </div>
         </div>
       </div>

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Cancel = () => {
   return (
-    <div className="flex items-center justify-between text-4xl">
-      Order Canceled
+    <div className="text-base md:text-2xl w-1/2 mx-auto mt-8">
+      <p>ご注文はキャンセルされました。</p>
     </div>
   );
 };
