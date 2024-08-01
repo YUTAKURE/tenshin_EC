@@ -3,12 +3,7 @@ import { cookies } from 'next/headers';
 
 import type { Database } from '@/lib/database.types';
 import GoogleMap from './components/map';
-import Product from './components/product';
-import Cart from './components/Cart';
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
-import Profile from './components/profile';
-import ProfilePage from './settings/profile/page';
 
 const Home = async () => {
   const supabase = createServerComponentClient<Database>({
@@ -87,9 +82,6 @@ const Home = async () => {
           <h2 className=" font-light mx-auto">#天心のギョウザ</h2>
           <div>
             <p>25個入 ¥3,600</p>
-            <p className="text-xs font-thin">
-              {/* 特典付き for <span className="dark:text-yellow-300">黄推し</span> */}
-            </p>
           </div>
         </div>
         <div className="flex flex-col items-center w-11/12 mx-auto mt-6">
@@ -131,7 +123,6 @@ const Home = async () => {
           />
           <div className="font-light mx-auto">
             <p>25個入 ¥3,600</p>
-            <p className="text-xs font-thin mt-2">特典付き</p>
           </div>
         </div>
       </div>
