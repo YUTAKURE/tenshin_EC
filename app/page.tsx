@@ -88,7 +88,7 @@ const Home = async () => {
           <div>
             <p>25個入 ¥3,600</p>
             <p className="text-xs font-thin">
-              特典付き for <span className="dark:text-yellow-300">黄推し</span>
+              {/* 特典付き for <span className="dark:text-yellow-300">黄推し</span> */}
             </p>
           </div>
         </div>
