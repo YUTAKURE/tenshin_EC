@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useRef, useEffect, useState } from 'react';
 
 interface IframeComponentProps {
   src: string;
@@ -12,20 +14,50 @@ interface IframeComponentProps {
 
 const IframeComponent: React.FC<IframeComponentProps> = ({
   src,
-  style = { border: '0' },
-  allowFullScreen = true,
-  loading = 'lazy',
-  referrerPolicy = 'no-referrer-when-downgrade',
+  style,
+  allowFullScreen,
+  loading,
+  referrerPolicy,
 }) => {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      },
+    );
+
+    if (iframeRef.current) {
+      observer.observe(iframeRef.current);
+    }
+
+    return () => {
+      if (iframeRef.current) {
+        observer.unobserve(iframeRef.current);
+      }
+    };
+  }, []);
+
   return (
     <iframe
       className="absolute w-full h-full top-0 left-0"
-      src={src}
+      ref={iframeRef}
+      src={isIntersecting ? src : undefined}
       style={style}
       allowFullScreen={allowFullScreen}
       loading={loading}
       referrerPolicy={referrerPolicy}
-    />
+    ></iframe>
   );
 };
 

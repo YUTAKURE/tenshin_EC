@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import SupabaseListener from './components/supabase-listener';
 import { CartProvider } from './components/CartContext';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +29,9 @@ export default function RootLayout({
           <footer className="py-5">
             <div className="text-center text-sm text-gray-400">
               Copyright © All rights reserved | 中華 天心
+            </div>
+            <div className="text-center text-xs mt-3 text-gray-400">
+              <Link href="/new">特定商取引法に基づく表記</Link>
             </div>
           </footer>
         </div>
