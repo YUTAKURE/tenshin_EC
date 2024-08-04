@@ -2,16 +2,44 @@ import React from 'react';
 
 const SpecifiedCommercialTransactionsAct = () => {
   return (
-    <div className="w-3/4 mx-auto mt-5 text-sm">
+    <div className="w-3/4 mx-auto mt-5 text-xs">
       <h1 className="text-center mb-4">【特定商取引法に基づく表記】</h1>
       <table className="bg-gray-600 text-xs text-left shadow-md">
         <tbody>
           <tr>
             <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
-              販売事業者
+              販売業社の名称
             </th>
             <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
               中華天心
+            </td>
+          </tr>
+          <tr>
+            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
+              所在地
+            </th>
+            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
+              〒412-0039
+              <br />
+              静岡県御殿場市竈1818-6
+            </td>
+          </tr>
+          <tr>
+            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
+              電話番号
+            </th>
+            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
+              0550-89-0878
+              <br />
+              営業時間 11:00-14:30, 17:00-20:30 (火を除く)
+            </td>
+          </tr>
+          <tr>
+            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
+              メールアドレス
+            </th>
+            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
+              tenshin.gotemba@gmail.com
             </td>
           </tr>
           <tr>
@@ -22,41 +50,18 @@ const SpecifiedCommercialTransactionsAct = () => {
               榑林 昇
             </td>
           </tr>
-          <tr>
-            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
-              所在地
-            </th>
-            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
-              静岡県御殿場市竈1818-6
-            </td>
-          </tr>
-          <tr>
-            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
-              電話番号
-            </th>
-            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
-              0550-89-0878
-            </td>
-          </tr>
-          <tr>
-            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
-              メールアドレス
-            </th>
-            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
-              tenshin-gotemba@gmail.com
-            </td>
-          </tr>
+
           <tr>
             <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
               販売URL
             </th>
             <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
-              https://www.tenshin-gotemba.site/settings/order
+              https://www.tenshin-gotemba.site/
             </td>
           </tr>
           <tr>
             <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
-              お支払い方法
+              受け付け可能な決済手段
             </th>
             <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
               クレジットカード
@@ -64,10 +69,76 @@ const SpecifiedCommercialTransactionsAct = () => {
           </tr>
           <tr>
             <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
-              商品代金以外の必要金額
+              決済期間
             </th>
             <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
-              送料： 本州●円 　四国・九州・北海道：●円 　沖縄：●円
+              クレジットカードの決済でただちに処理されます
+            </td>
+          </tr>
+          <tr>
+            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
+              販売価格
+            </th>
+            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
+              ¥2,790
+            </td>
+          </tr>
+          <tr>
+            <th className="font-semibold bg-gray-300 dark:text-primary-dark duration-300 p-2">
+              追加手数料等の追加料金
+            </th>
+            <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
+              <h2 className="mb-2">【送料】</h2>
+              <ul className="flex gap-6">
+                <li>
+                  <h3>※1個の場合</h3>
+                  <ul>
+                    <li>北海道: ¥1890</li>
+                    <li>北東北: ¥1460</li>
+                    <li>南東北: ¥1340</li>
+                    <li>北信越: ¥1340</li>
+                    <li>関東: ¥1210</li>
+                    <li>中部: ¥1210</li>
+                    <li>近畿: ¥1210</li>
+                    <li>中国: ¥1340</li>
+                    <li>四国: ¥1340</li>
+                    <li>九州: ¥1460</li>
+                    <li>沖縄: ¥1730</li>
+                  </ul>
+                </li>
+                <li>
+                  <h3>※2個の場合</h3>
+                  <ul>
+                    <li>北海道: ¥2230</li>
+                    <li>北東北: ¥1800</li>
+                    <li>南東北: ¥1680</li>
+                    <li>北信越: ¥1680</li>
+                    <li>関東: ¥1550</li>
+                    <li>中部: ¥1550</li>
+                    <li>近畿: ¥1550</li>
+                    <li>中国: ¥1680</li>
+                    <li>四国: ¥1680</li>
+                    <li>九州: ¥1800</li>
+                    <li>沖縄: ¥2070</li>
+                  </ul>
+                </li>
+                <li>
+                  <h3>※3個の場合</h3>
+                  <ul>
+                    <li>北海道: ¥2640</li>
+                    <li>北東北: ¥2210</li>
+                    <li>南東北: ¥2090</li>
+                    <li>北信越: ¥2090</li>
+                    <li>関東: ¥1960</li>
+                    <li>中部: ¥1960</li>
+                    <li>近畿: ¥1960</li>
+                    <li>中国: ¥2090</li>
+                    <li>四国: ¥2090</li>
+                    <li>九州: ¥2210</li>
+                    <li>沖縄: ¥2480</li>
+                  </ul>
+                </li>
+              </ul>
             </td>
           </tr>
           <tr>
@@ -113,16 +184,6 @@ const SpecifiedCommercialTransactionsAct = () => {
             <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
               「不良品・当社の商品の間違い」の場合は当社が負担いたします。
               <br />
-              配送途中の破損などの事故がございましたら、弊社までご連絡下さい。
-              <br />
-              送料・手数料ともに弊社負担で早急に新品をご送付致します。
-              <br />
-              <br />
-              【返品対象】
-              <br />
-              「不良品・当社の商品の間違い」の場合
-              <br />
-              <br />
               【返品時期】
               <br />
               ご購入後●日以内にご連絡があった場合に返金可能となります。
@@ -140,9 +201,7 @@ const SpecifiedCommercialTransactionsAct = () => {
               表現、及び商品に関する注意書き
             </th>
             <td className="bg-white dark:bg-slate-500 dark:text-primary-light duration-300 p-2">
-              本商品に示された表現や再現性には個人差があり、
-              <br />
-              必ずしも利益や効果を保証したものではございません。
+              到着後、2日以内にお召し上がりください。
             </td>
           </tr>
         </tbody>

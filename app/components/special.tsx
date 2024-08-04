@@ -18,7 +18,7 @@ const Special = () => {
     <div>
       <div className="text-center font-bold text-xl mb-10">特典ページ</div>
 
-      <div className="w-1/2 mx-auto">スペシャル</div>
+      <div className="w-1/2 text-center mx-auto">準備中</div>
     </div>
   );
 };

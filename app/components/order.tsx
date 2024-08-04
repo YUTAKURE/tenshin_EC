@@ -7,7 +7,7 @@ const products: Product[] = [
   {
     id: '1',
     name: '天心のギョウザ(25個入)',
-    price: 3600,
+    price: 2790,
     quantity: 0,
   },
 ];

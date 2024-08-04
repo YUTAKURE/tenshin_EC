@@ -27,10 +27,10 @@ export default function RootLayout({
           </main>
 
           <footer className="py-5">
-            <div className="text-center text-sm text-gray-400">
+            <div className="text-center text-xs text-gray-400">
               Copyright © All rights reserved | 中華 天心
             </div>
-            <div className="text-center text-xs mt-3 text-gray-400">
+            <div className="text-center text-xxs mt-3 text-gray-400">
               <Link href="/new">特定商取引法に基づく表記</Link>
             </div>
           </footer>
