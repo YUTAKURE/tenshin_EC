@@ -30,8 +30,8 @@ const config: Config = {
       colors: {
         // Light colors
         'primary-light': '#F7F8FC',
-        'secondary-light': '#FFFFFF',
-        'ternary-light': '#f6f7f8',
+        'secondary-light': '#fafafa',
+        'ternary-light': '#f0f0f0',
 
         // Dark colors
         'primary-dark': '#0D2438',

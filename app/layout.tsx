@@ -31,7 +31,9 @@ export default function RootLayout({
               Copyright © All rights reserved | 中華 天心
             </div>
             <div className="text-center text-xxs mt-3 text-gray-400">
-              <Link href="/new">特定商取引法に基づく表記</Link>
+              <Link href="/commercial_transactions">
+                特定商取引法に基づく表記
+              </Link>
             </div>
           </footer>
         </div>
