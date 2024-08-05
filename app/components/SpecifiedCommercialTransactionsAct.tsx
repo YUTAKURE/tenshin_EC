@@ -173,6 +173,14 @@ const SpecifiedCommercialTransactionsAct = () => {
               ¥2,790
             </td>
           </tr>
+          <tr>
+            <th className="font-semibold bg-ternary-light dark:bg-slate-300 dark:text-primary-dark duration-300 p-2">
+              販売数量の制限
+            </th>
+            <td className="bg-secondary-light dark:bg-primary-dark dark:text-secondary-light duration-300 p-2">
+              お一人様3個まで購入可能です。
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
