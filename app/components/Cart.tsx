@@ -95,7 +95,7 @@ const Cart = () => {
         }
       });
   };
-  console.log(jpy.format(totalAmount));
+
   return (
     <div className="border rounded-lg p-4 shadow-md w-5/6 mx-auto mt-10">
       <h2 className="text-lg font-semibold mb-4 text-center">カート</h2>

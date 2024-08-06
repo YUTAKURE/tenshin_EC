@@ -9,7 +9,8 @@ import Link from 'next/link';
 import Loading from '@/app/loading';
 import * as z from 'zod';
 import type { Database } from '@/lib/database.types';
-import { error } from 'console';
+// import { error } from 'console';
+import { checkEmail } from '@/lib/checkEmail';
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
@@ -42,6 +43,13 @@ const Signup = () => {
     setLoading(true);
 
     try {
+      const emailExists = await checkEmail(data.email);
+      if (emailExists) {
+        setMessage('このメールアドレスは既に登録されています。');
+        setLoading(false);
+        return;
+      }
+
       // サインアップ
       const { error: errorSignup } = await supabase.auth.signUp({
         email: data.email,
