@@ -68,7 +68,15 @@ const Signup = () => {
       // プロフィールの名前を更新
       const { error: updateError } = await supabase
         .from('profiles')
-        .update({ name: data.name })
+        .update({
+          name: data.name,
+          postal_code: null,
+          phone_number: null,
+          prefecture: null,
+          city: null,
+          town: null,
+          building: null,
+        })
         .eq('email', data.email);
 
       // エラーチェック
