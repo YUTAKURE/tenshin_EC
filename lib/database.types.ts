@@ -36,25 +36,37 @@ export type Database = {
     Tables: {
       profiles: {
         Row: {
-          avatar_url: string | null;
           email: string;
           id: string;
-          introduce: string | null;
           name: string | null;
+          postal_code: string | null;
+          phone_number: string | null;
+          prefecture: string | null;
+          city: string | null;
+          town: string | null;
+          building: string | null;
         };
         Insert: {
-          avatar_url?: string | null;
           email: string;
           id: string;
-          introduce?: string | null;
           name?: string | null;
+          postal_code: string | null;
+          phone_number: string | null;
+          prefecture: string | null;
+          city: string | null;
+          town: string | null;
+          building: string | null;
         };
         Update: {
-          avatar_url?: string | null;
           email?: string;
           id?: string;
-          introduce?: string | null;
           name?: string | null;
+          postal_code: string | null;
+          phone_number: string | null;
+          prefecture: string | null;
+          city: string | null;
+          town: string | null;
+          building: string | null;
         };
         Relationships: [
           {

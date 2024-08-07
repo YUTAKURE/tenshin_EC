@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Image from 'next/image';
 import Loading from '@/app/loading';
 import * as z from 'zod';
 import type { Database } from '@/lib/database.types';
@@ -17,7 +16,12 @@ type Schema = z.infer<typeof schema>;
 // 入力データの検証ルールを定義
 const schema = z.object({
   name: z.string().min(2, { message: '2文字以上入力する必要があります。' }),
-  introduce: z.string().min(0),
+  postal_code: z.string().min(0),
+  phone_number: z.string().min(0),
+  prefecture: z.string().min(0),
+  city: z.string().min(0),
+  town: z.string().min(0),
+  building: z.string().min(0),
 });
 
 // プロフィール
@@ -27,19 +31,30 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   // const [avatar, setAvatar] = useState<File | null>(null);
   const [message, setMessage] = useState('');
-  const [fileMessage, setFileMessage] = useState('');
+  // const [fileMessage, setFileMessage] = useState('');
   // const [avatarUrl, setAvatarUrl] = useState('/default.png');
   const { user } = useStore();
+  const [address, setAddress] = useState({
+    prefecture: '',
+    city: '',
+    town: '',
+  });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     // 初期値
     defaultValues: {
       name: user.name ? user.name : '',
-      introduce: user.introduce ? user.introduce : '',
+      postal_code: user.postal_code ? user.postal_code : '',
+      phone_number: user.phone_number ? user.phone_number : '',
+      prefecture: user.prefecture ? user.prefecture : '',
+      city: user.city ? user.city : '',
+      town: user.town ? user.town : '',
+      building: user.building ? user.building : '',
     },
     // 入力値の検証
     resolver: zodResolver(schema),
@@ -93,6 +108,47 @@ const Profile = () => {
   //   [],
   // );
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      setLoading(true);
+
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          // .select('name, postal_code, phone_number')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+
+        if (error) {
+          // setMessage('エラーが発生しました。' + error.message);
+          // 解決すべし！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        } else if (data) {
+          setAddress({
+            prefecture: data.prefecture || '',
+            city: data.city || '',
+            town: data.town || '',
+          });
+          reset({
+            name: data.name || '',
+            postal_code: data.postal_code || '',
+            phone_number: data.phone_number || '',
+            prefecture: data.prefecture || '',
+            city: data.city || '',
+            town: data.town || '',
+            building: data.building || '',
+          });
+        }
+      } catch (error) {
+        setMessage('エラーが発生しました。');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, [user.id, reset, supabase]);
+
   // 送信
   const onSubmit: SubmitHandler<Schema> = async (data) => {
     setLoading(true);
@@ -131,14 +187,14 @@ const Profile = () => {
       //   avatar_url = urlData.publicUrl;
       // }
 
+      const combinedData = { ...data, ...address, id: user.id };
+
+      console.log('Submitting data:', combinedData);
+
       // プロフィールアップデート
       const { error: updateError } = await supabase
         .from('profiles')
-        .update({
-          name: data.name,
-          introduce: data.introduce,
-          // avatar_url,
-        })
+        .update(combinedData)
         .eq('id', user.id);
 
       // エラーチェック
@@ -148,6 +204,9 @@ const Profile = () => {
       }
 
       setMessage('プロフィールを更新しました。');
+
+      // フォームのデータをリセットして更新
+      reset(combinedData);
     } catch (error) {
       setMessage('エラーが発生しました。' + error);
       return;
@@ -159,7 +218,10 @@ const Profile = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      <div className="text-center font-bold text-xl">プロフィール</div>
+      <div className="text-center font-bold text-xl">
+        プロフィール
+        <p className="text-[0.6rem] top-6 left-8">(お届け先情報)</p>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* アバター画像 */}
         <div className="">
@@ -205,7 +267,7 @@ const Profile = () => {
         </div>
 
         {/* 自己紹介 */}
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <div className="text-sm mb-1 font-bold">自己紹介</div>
           <textarea
             className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500  text-primary-dark"
@@ -214,11 +276,27 @@ const Profile = () => {
             {...register('introduce')}
             rows={5}
           />
-        </div>
+        </div> */}
 
         {/* 住所 */}
         <div className="mb-5">
-          <Address />
+          <Address register={register} setAddress={setAddress} />
+        </div>
+
+        {/* 電話番号 */}
+        <div className="mb-5">
+          <div className="text-sm mb-1 font-bold">電話番号</div>
+          <input
+            type="text"
+            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500 text-primary-dark"
+            placeholder="電話番号"
+            id="phone_number"
+            {...register('phone_number', { required: true })}
+            required
+          />
+          <div className="my-3 text-center text-sm text-red-500">
+            {errors.name?.message}
+          </div>
         </div>
 
         {/* 変更ボタン */}

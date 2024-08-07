@@ -92,7 +92,7 @@ export const POST = async (request: Request) => {
       price_data: {
         currency: 'jpy',
         product_data: {
-          name: 'Shipping Cost',
+          name: '配送料',
         },
         unit_amount: adjustedShippingCost,
       },

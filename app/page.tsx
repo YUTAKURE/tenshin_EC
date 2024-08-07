@@ -26,6 +26,7 @@ const Home = async () => {
       .single();
 
     profile = currentProfile;
+    console.log(profile);
   }
 
   return (
@@ -81,7 +82,7 @@ const Home = async () => {
         <div className=" w-11/12 mx-auto mt-20">
           <h2 className=" font-light mx-auto">#天心のギョウザ</h2>
           <div>
-            <p>25個入 ¥3,600</p>
+            <p>25個入 ¥2,790</p>
           </div>
         </div>
         <div className="flex flex-col items-center w-11/12 mx-auto mt-6">

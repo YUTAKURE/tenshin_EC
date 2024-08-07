@@ -182,7 +182,7 @@ const Cart = () => {
           ) : (
             <button
               onClick={checkout}
-              className="mt-4 px-4 py-2 w-full bg-sky-500 hover:brightness-95 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="font-bold text-sm mt-4 px-4 py-2 w-full bg-sky-500 hover:brightness-95 rounded-full p-2 text-white focus:outline-none"
             >
               注文する
             </button>

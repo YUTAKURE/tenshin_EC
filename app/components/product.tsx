@@ -36,8 +36,8 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         className={`mt-2 px-4 py-2 ${
           isProductInCart
             ? 'bg-gray-400 text-gray-600 text-sm cursor-not-allowed'
-            : 'bg-sky-500 text-white text-sm hover:brightness-95'
-        } rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+            : ' bg-sky-500 hover:brightness-95 p-2 text-white text-sm'
+        } font-bold rounded-full w-full focus:outline-none`}
       >
         {isProductInCart ? 'カートに追加済' : 'カートに入れる'}
       </button>
