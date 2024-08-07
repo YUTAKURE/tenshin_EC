@@ -35,7 +35,7 @@ const SupabaseListener = async () => {
     if (currentProfile && currentProfile.email !== session.user.email) {
       // プロフィール情報をアップデート
       const updatedProfileData = {
-        email: session.user.email,
+        email: session.user.email ?? '',
         name: currentProfile.name,
         postal_code: currentProfile.postal_code,
         phone_number: currentProfile.phone_number,

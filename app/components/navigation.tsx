@@ -25,8 +25,12 @@ const Navigation = ({
       id: session ? session.user.id : '',
       email: session ? session.user.email! : '',
       name: session && profile ? profile.name : '',
-      introduce: session && profile ? profile.introduce : '',
-      avatar_url: session && profile ? profile.avatar_url : '',
+      postal_code: session && profile ? profile.postal_code : '',
+      phone_number: session && profile ? profile.phone_number : '',
+      prefecture: session && profile ? profile.prefecture : '',
+      city: session && profile ? profile.city : '',
+      town: session && profile ? profile.town : '',
+      building: session && profile ? profile.building : '',
     });
   }, [session, setUser, profile]);
 
