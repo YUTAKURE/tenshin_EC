@@ -45,25 +45,25 @@ const Home = async () => {
         )}
       </div>
 
-      <div className="mb-10 mt-20 w-5/6 md:w-11/12 mx-auto">
-        <h1 className="text-xl text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
+      <div className="mb-10 mt-20 w-2/3 md:w-5/6 mx-auto">
+        <h1 className="text-base md:text-lg text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
           ご挨拶
         </h1>
-        <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-10">
+        <p className="text-xs md:text-[0.9rem] text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-10">
           中華天心のギョウザ販売サイトです。
           以前は株式会社DD様の多大なるご協力により、多くの方に当店のギョウザをお届けすることができました。
           この度、オンライン注文受付及びカード決済に対応いたしましたので、よりお気軽に天心のギョウザをお楽しみいただけるようになりました。
         </p>
 
-        <h1 className="text-xl text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
+        <h1 className="text-base md:text-lg text-slate-700 dark:text-slate-50 font-light mb-5 inline-block border-b border-red-400 dark:border-yellow-300">
           ご利用方法
         </h1>
-        <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-5">
+        <p className="text-xs md:text-[0.9rem] text-slate-700 dark:text-slate-50 font-extralight leading-relaxed mb-5">
           大変お手数をおかけいたしますが、新規登録からお客様情報をご登録の上、
           ログイン後の会員メニュー内からご注文をお願いいたします。
           クール便での発送となります。&#40;国内のみ&#41;
         </p>
-        <p className="text-sm md:text-base text-slate-700 dark:text-slate-50 font-extralight leading-relaxed">
+        <p className="text-xs md:text-[0.9rem] text-slate-700 dark:text-slate-50 font-extralight leading-relaxed">
           どうぞよろしくお願い申し上げます。
         </p>
       </div>
@@ -80,9 +80,11 @@ const Home = async () => {
 
       <div className=" md:hidden">
         <div className=" w-11/12 mx-auto mt-20">
-          <h2 className=" font-light mx-auto">#天心のギョウザ</h2>
+          <h2 className="text-slate-700 dark:text-slate-50 font-light mx-auto">
+            #天心のギョウザ
+          </h2>
           <div>
-            <p>25個入 ¥2,790</p>
+            <p className="text-slate-700 dark:text-slate-50">25個入 ¥2,790</p>
           </div>
         </div>
         <div className="flex flex-col items-center w-11/12 mx-auto mt-6">
@@ -91,14 +93,14 @@ const Home = async () => {
             alt="An example image"
             width={350}
             height={250}
-            className=" rounded-3xl opacity-60 dark:opacity-70"
+            className=" rounded-3xl opacity-70 dark:opacity-90"
           />
           <Image
             src="/tenshin_gyoza1.jpg"
             alt="An example image"
             width={350}
             height={250}
-            className=" rounded-3xl opacity-60 dark:opacity-70 mt-2"
+            className=" rounded-3xl opacity-70 dark:opacity-90 mt-2"
           />
         </div>
       </div>
@@ -111,7 +113,7 @@ const Home = async () => {
             alt="An example image"
             width={350}
             height={250}
-            className=" rounded-3xl opacity-60 dark:opacity-70"
+            className=" rounded-3xl opacity-70 dark:opacity-90"
           />
         </div>
         <div className="flex place-items-center w-11/12 mx-auto md:-mt-2 ">
@@ -120,7 +122,7 @@ const Home = async () => {
             alt="An example image"
             width={350}
             height={250}
-            className=" rounded-3xl opacity-60 dark:opacity-70"
+            className=" rounded-3xl opacity-70 dark:opacity-90"
           />
           <div className="font-light mx-auto">
             <p>25個入 ¥3,600</p>
